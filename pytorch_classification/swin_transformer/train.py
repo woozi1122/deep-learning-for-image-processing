@@ -65,10 +65,10 @@ def main(args):
         assert os.path.exists(args.weights), "weights file: '{}' not exist.".format(args.weights)
         weights_dict = torch.load(args.weights, map_location=device)["model"]
         # 删除有关分类类别的权重
-        for k in list(weights_dict.keys()):
-            if "head" in k:
-                del weights_dict[k]
-        print(model.load_state_dict(weights_dict, strict=False))
+#         for k in list(weights_dict.keys()):
+#             if "head" in k:
+#                 del weights_dict[k]
+#         print(model.load_state_dict(weights_dict, strict=False))
 
     if args.freeze_layers:
         for name, para in model.named_parameters():
